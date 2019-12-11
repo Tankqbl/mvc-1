@@ -117,84 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js"}],"reset.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"global.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/process/browser.js":[function(require,module,exports) {
+})({"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -11006,7 +10929,74 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{"process":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"app1.css":[function(require,module,exports) {
+},{"process":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js"}],"app1.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -11028,23 +11018,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*数据相关放m
 * 视图相关再v
 * 其他再c*/
-var eventBus = (0, _jquery.default)(window);
 var m = {
   data: {
     //初始化数据
     n: parseInt(localStorage.getItem("n")) //初始化n
 
-  },
-  create: function create() {},
-  delete: function _delete() {},
-  update: function update(data) {
-    Object.assign(m.data, data);
-    eventBus.trigger('xxx'); //事件名字不能有空格
-
-    console.log("111");
-    localStorage.setItem("n", m.data.n);
-  },
-  get: function get() {}
+  }
 };
 var v = {
   el: null,
@@ -11068,44 +11047,30 @@ var c = {
   init: function init(container) {
     //初始化，先不拿最后才拿
     v.init(container);
-    v.render(m.data.n);
     c.autoBindEvents();
-    eventBus.on('xxx', function () {
-      v.render(m.data.n);
-      console.log("xxx");
-    });
   },
   events: {
     'click #add1': 'add',
     'click #minus1': 'minus',
     'click #mul2': 'mul',
-    'click #divide2': 'div'
+    'click #divide2': 'divide'
   },
   add: function add() {
-    m.update({
-      n: m.data.n + 1
-    });
-    console.log("111");
+    m.data.n += 1;
   },
   minus: function minus() {
-    m.update({
-      n: m.data.n - 1
-    });
+    m.data.n -= 1;
   },
   mul: function mul() {
-    m.update({
-      n: m.data.n * 2
-    });
+    m.data.n *= 2;
   },
-  div: function div() {
-    m.update({
-      n: m.data.n / 2
-    });
+  divide: function divide() {
+    m.data.n /= 2;
   },
   autoBindEvents: function autoBindEvents() {
     for (var key in c.events) {
-      var value = c[c.events[key]];
-      var spaceIndex = key.indexOf(' ');
+      var value = c.events[key];
+      var spaceIndex = key.indexOf('');
       var part1 = key.slice(0, spaceIndex);
       var part2 = key.slice(spaceIndex + 1);
       console.log(part1, part2, value);
@@ -11116,193 +11081,7 @@ var c = {
 
 var _default = c;
 exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./app1.css":"app1.css"}],"app2.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app2.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-require("./app2.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var eventBus = (0, _jquery.default)(window);
-var localkey = "app2.index";
-var m = {
-  data: {
-    //初始化数据
-    index: parseInt(localStorage.getItem(localkey)) || 0
-  },
-  create: function create() {},
-  delete: function _delete() {},
-  update: function update(data) {
-    Object.assign(m.data, data);
-    eventBus.trigger('m:updated'); //事件名字不能有空格
-
-    localStorage.setItem('index', m.data.index);
-  },
-  get: function get() {}
-};
-var v = {
-  el: null,
-  html: function html(index) {
-    return "\n      <div>\n            <ol class=\"tab-bar\">\n                <li class=\"".concat(index === 0 ? 'selected' : ' ', "\" data-index=\"0\"><span>1111</span></li>\n                <li class=\"").concat(index === 1 ? 'selected' : ' ', "\" data-index=\"1\"><span>2222</span></li>\n            </ol>\n            <ol class=\"tab-content\">\n                <li class=\"").concat(index === 0 ? 'active' : ' ', "\">\u5185\u5BB91</li>\n                <li class=\"").concat(index === 1 ? 'active' : ' ', "\">\u5185\u5BB92</li>\n            </ol>\n        </div>\n");
-  },
-  init: function init(container) {
-    //初始化，先不拿最后才拿
-    v.el = (0, _jquery.default)(container);
-  },
-  render: function render(index) {
-    if (v.el.children.length !== 0) {
-      v.el.empty();
-    }
-
-    (0, _jquery.default)(v.html(index)).appendTo(v.el);
-  }
-};
-var c = {
-  init: function init(container) {
-    //初始化，先不拿最后才拿
-    v.init(container);
-    v.render(m.data.index);
-    c.autoBindEvents();
-    eventBus.on('m:updated', function () {
-      v.render(m.data.index);
-    });
-  },
-  events: {
-    'click .tab-bar li': 'tB'
-  },
-  tB: function tB(e) {
-    console.log("aa");
-    var index = parseInt(e.currentTarget.dataset.index); //对应的是data-index那里的设置
-
-    console.log(index);
-    m.update({
-      index: index
-    });
-  },
-  autoBindEvents: function autoBindEvents() {
-    for (var key in c.events) {
-      var value = c[c.events[key]];
-      var spaceIndex = key.indexOf(' ');
-      var part1 = key.slice(0, spaceIndex);
-      var part2 = key.slice(spaceIndex + 1);
-      console.log(part1, part2, value);
-      v.el.on(part1, part2, value);
-    }
-  }
-}; //第一次渲染html
-
-var _default = c;
-exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./app2.css":"app2.css"}],"app3.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app3.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-require("./app3.css");
-
-var _app2 = _interopRequireDefault(require("./app2"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var $square = (0, _jquery.default)("#app3 .square");
-var localKey = "app3.active";
-var html = "\n        <section id=\"app3\">\n            <div class=\"square\"></div>\n        </section>\n";
-var $element = (0, _jquery.default)(html).appendTo((0, _jquery.default)("body>.page"));
-var active = localStorage.getItem(localKey) === "yes"; //默认是undefined，改过就是yes，没改过就是no或者undefined
-
-/*if(active){
-    $square.addClass(`active`)
-}else{
-    $square.removeClass(`active`)
-}*/
-//四行缩减为下面一行，意思为如果有就删掉，没有就加上
-
-$square.toggleClass("active", active);
-$square.on("click", function () {
-  if ($square.hasClass("active")) {
-    $square.removeClass("active");
-    localStorage.setItem(localKey, "no");
-  } else {
-    $square.addClass("active");
-    localStorage.setItem(localKey, "yes");
-  }
-});
-var _default = _app2.default;
-exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./app3.css":"app3.css","./app2":"app2.js"}],"app4.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app4.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _jquery = _interopRequireDefault(require("jquery"));
-
-require("./app4.css");
-
-var _app2 = _interopRequireDefault(require("./app2"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var html = "\n   <section id=\"app4\">\n            <div class=\"circle\"></div>\n        </section>\n";
-var $element = (0, _jquery.default)(html).appendTo((0, _jquery.default)("body>.page"));
-var $circle = (0, _jquery.default)("#app4 .circle");
-$circle.on("click", function () {
-  $circle.addClass("active");
-});
-var _default = _app2.default;
-exports.default = _default;
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./app4.css":"app4.css","./app2":"app2.js"}],"main.js":[function(require,module,exports) {
-"use strict";
-
-require("./reset.css");
-
-require("./global.css");
-
-var _app = _interopRequireDefault(require("./app1.js"));
-
-var _app2 = _interopRequireDefault(require("./app2.js"));
-
-var _app3 = _interopRequireDefault(require("./app3.js"));
-
-var _app4 = _interopRequireDefault(require("./app4.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_app.default.init('#app1');
-
-_app2.default.init("#app2");
-/*z.init(`#app3`)
-h.init(`#app4`)*/
-},{"./reset.css":"reset.css","./global.css":"global.css","./app1.js":"app1.js","./app2.js":"app2.js","./app3.js":"app3.js","./app4.js":"app4.js"}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"jquery":"../node_modules/jquery/dist/jquery.js","./app1.css":"app1.css"}],"C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -11330,7 +11109,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65049" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64989" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -11506,5 +11285,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["C:/Users/Administrator.DESKTOP-4M3S7HN/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","app1.js"], null)
+//# sourceMappingURL=/app1.js.map
