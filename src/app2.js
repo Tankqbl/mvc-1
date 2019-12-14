@@ -1,22 +1,30 @@
 import $ from "jquery"
 import "./app2.css"
+import Model from "./base/MODEL";
 const eventBus=$(window)
 const localkey =`app2.index`
-const m={
-    data:{
-        //初始化数据
-         index :parseInt(localStorage.getItem(localkey))  || 0
-    },
-    create(){},
-    delete(){},
+
+
+const m=new Model({
+    data:{ index :parseInt(localStorage.getItem(localkey))  || 0},
     update(data){
         Object.assign(m.data,data)
         eventBus.trigger('m:updated')//事件名字不能有空格
-        localStorage.setItem('index',m.data.index)
-    },
-    get(){}
-}
+        localStorage.setItem('app2.index',m.data.index)
+    }})
+
 const v={
+   
+}
+const view={
+    init(container){//初始化，先不拿最后才拿
+        view.el=$(container)
+        view.render(m.data.index)
+        view.autoBindEvents()
+        eventBus.on('m:updated',()=>{
+            view.render(m.data.index)
+        })
+    },
     el:null,
     html:(index)=>{
         return `
@@ -32,24 +40,11 @@ const v={
         </div>
 `
     },
-    init(container){//初始化，先不拿最后才拿
-        v.el=$(container)
-    },
     render(index){
-        if (v.el.children.length !== 0) {
-            v.el.empty()
+        if (view.el.children.length !== 0) {
+            view.el.empty()
         }
-        $(v.html(index)).appendTo(v.el)
-    }
-}
-const c={
-    init(container){//初始化，先不拿最后才拿
-        v.init(container)
-        v.render(m.data.index)
-        c.autoBindEvents()
-        eventBus.on('m:updated',()=>{
-            v.render(m.data.index)
-        })
+        $(view.html(index)).appendTo(view.el)
     },
     events:{
         'click .tab-bar li':'tB',
@@ -61,15 +56,15 @@ const c={
         m.update({index:index})
     },
     autoBindEvents(){
-        for (let key in c.events) {
-            const value = c[c.events[key]]
+        for (let key in view.events) {
+            const value = view[view.events[key]]
             const spaceIndex = key.indexOf(' ')
             const part1 = key.slice(0, spaceIndex)
             const part2 = key.slice(spaceIndex + 1)
             console.log(part1, part2, value)
-            v.el.on(part1, part2, value)
+            view.el.on(part1, part2, value)
         }
     },
 }
 //第一次渲染html
-export  default c
+export  default view

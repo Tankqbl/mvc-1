@@ -1,6 +1,6 @@
 import $ from "jquery"
 import "./app3.css"
-import c from "./app2";
+import view from "./app2";
 
 const $square = $(`#app3 .square`)
 const localKey = `app3.active`
@@ -30,4 +30,4 @@ $square.on(`click`, () => {
     }
 })
 
-export  default c
+export  default view

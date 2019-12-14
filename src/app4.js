@@ -1,6 +1,6 @@
 import $ from "jquery"
 import "./app4.css"
-import c from "./app2";
+import view from "./app2";
 const html=`
    <section id="app4">
             <div class="circle"></div>
@@ -13,4 +13,4 @@ $circle.on(`click`, () => {
     $circle.addClass(`active`)
 })
 
-export  default c
+export  default view
